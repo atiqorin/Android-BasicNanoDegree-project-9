@@ -13,12 +13,12 @@ import java.util.List;
  * Created by atiqorin on 7/4/16.
  */
 public class DBHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_ACTIVITY = "contactsManager";
-    private static final String KEY_ID = "id";
-    private static final String KEY_ACTION = "Action";
-    private static final String KEY_TIME = "time";
-    private static  final String TABLE_NAME="userHabit";
+    private static final int DATABASE_VERSION = DBContract.FeedEntry.DATABASE_VERSION;
+    private static final String DATABASE_ACTIVITY = DBContract.FeedEntry.DATABASE_ACTIVITY;
+    private static final String KEY_ID = DBContract.FeedEntry.KEY_ID;
+    private static final String KEY_ACTION = DBContract.FeedEntry.KEY_ACTION;
+    private static final String KEY_TIME = DBContract.FeedEntry.KEY_TIME;
+    private static  final String TABLE_NAME= DBContract.FeedEntry.TABLE_NAME;
     Context context;
     public DBHelper(Context context) {
 
@@ -29,7 +29,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_CONTACTS_TABLE = "CREATE TABLE userHabit ( " + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "time TEXT, " + "Action TEXT )";
+        String CREATE_CONTACTS_TABLE = "CREATE TABLE "+TABLE_NAME+" ( " + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_TIME +" TEXT, " + KEY_ACTION+" TEXT )";
         db.execSQL(CREATE_CONTACTS_TABLE);
     }
 
